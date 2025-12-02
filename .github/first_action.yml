@@ -1,0 +1,37 @@
+name: First Workflow
+
+on: [push, workflow_dispatch]
+
+jobs:
+  first_job:
+
+    runs_on: ubuntu-linux
+  
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4 
+
+      - name: Run lint
+        uses: echo "anc"
+
+  second_job:
+
+    runs_on: ubuntu-linux
+  
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4 
+
+      - name: Run Test
+        run: echo Hello, world! 
+
+  third_job:
+
+    runs_on: ubuntu-linux
+  
+    steps:
+      - name: Build
+        uses: actions/checkout@v4 
+
+      - name: Run a one-line script
+        run: echo Hello, world!         

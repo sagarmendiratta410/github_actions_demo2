@@ -1,7 +1,7 @@
 name: First Workflow
 on: [push, workflow_dispatch]
 jobs:
-  linting_code:
+  testing_code:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -10,8 +10,10 @@ jobs:
         run: npm ci
       - name: Run Linting
         run: npm run lint 
+      - name: Test code
+        run: npm run test          
         
-  testing_code:
+  building_code:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -20,14 +22,6 @@ jobs:
         run: npm ci        
       - name: Test code
         run: npm run test      
-
-  deploying_code:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v4  
-      - name: Install dependencies
-        run: npm ci      
       - name: build code
         run: npm run build
       - name: Upload artifacts 
@@ -35,4 +29,16 @@ jobs:
         with:
           name: dist-files
           path: dist
-            
+
+          
+  deploying_code:
+    needs: testing_code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Build artifacts 
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+          path: dist
+      - name: Deploy
+        run: echo "Deploying..."            

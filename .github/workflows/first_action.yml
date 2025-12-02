@@ -5,7 +5,7 @@ on: [push, workflow_dispatch]
 jobs:
   first_job:
 
-    runs_on: ubuntu-linux
+    runs-on: ubuntu-linux
   
     steps:
       - name: Get code
@@ -16,7 +16,7 @@ jobs:
 
   second_job:
 
-    runs_on: ubuntu-linux
+    runs-on: ubuntu-linux
   
     steps:
       - name: Get code
@@ -27,7 +27,7 @@ jobs:
 
   third_job:
 
-    runs_on: ubuntu-linux
+    runs-on: ubuntu-linux
   
     steps:
       - name: Build

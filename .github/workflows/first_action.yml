@@ -1,7 +1,7 @@
 name: First Workflow
 on: [push, workflow_dispatch]
 env:
-  mongo_db_name: mongo_db_name
+  mongo_db_name: myname
 jobs:
   testing_code:
     runs-on: ubuntu-latest

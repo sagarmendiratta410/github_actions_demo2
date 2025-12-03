@@ -1,5 +1,7 @@
 name: First Workflow
 on: [push, workflow_dispatch]
+env:
+  mongo_db_name: mongo_db_name
 jobs:
   testing_code:
     runs-on: ubuntu-latest
@@ -16,7 +18,9 @@ jobs:
       - name: Run Linting
         run: npm run lint 
       - name: Test code
-        run: npm run test          
+        run: npm run test       
+      - name: Adding the env values
+        run: echo "Added the env variable mongo_db_name:${{env.mongo_db_name}}"        
         
   building_code:
     needs: testing_code  

@@ -5,7 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          name: ~/.npm
+          key: dependency-${{ hashFiles('**/package-lock.json')}}        
       - name: Install dependencies
         run: npm ci
       - name: Run Linting
@@ -20,7 +25,12 @@ jobs:
       script-file:  ${{steps.publish.outputs.script-file}}
     steps:
       - name: Get code
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          name: ~/.npm
+          key: dependency-${{ hashFiles('**/package-lock.json')}}        
       - name: Install dependencies
         run: npm ci        
       - name: Test code

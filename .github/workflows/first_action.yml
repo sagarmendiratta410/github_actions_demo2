@@ -2,6 +2,7 @@ name: First Workflow
 on: [push, workflow_dispatch]
 env:
   mongo_db_name: myname
+  mongo_db_password: ${{secrets.mongo_db_password}}
 jobs:
   testing_code:
     runs-on: ubuntu-latest

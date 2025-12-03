@@ -5,6 +5,7 @@ env:
   mongo_db_password: ${{secrets.mongo_db_password}}
 jobs:
   testing_code:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - name: Get code

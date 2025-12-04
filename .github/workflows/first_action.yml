@@ -74,7 +74,10 @@ jobs:
 
   final:
     needs: [testing_code]
+    strategy:
+      matrix: 
+        kubectl-version: [3.1,3.2,3.3]
     runs-on: ubuntu-latest
     steps:      
       - name: All Jobs completed
-        run: echo "All Jobs completed..."            
+        run: echo "Jobs complet with kubectl version ${{ matrix.kubectl-version }}..."            

@@ -85,4 +85,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: All Jobs completed
-        run: echo "Apps deployed with kubectl version ${{ matrix.kubectl-version }} on ${{ matrix.operating-system }} os..."            
+        run: echo "Apps deployed with kubectl version ${{ matrix.kubectl-version }} on ${{ matrix.operating-system }} os..."      
+
+  calling_workflow: 
+     needs: [testing_code]
+     uses: ./.github/workflows/second_workflow_action.yml

@@ -80,4 +80,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: All Jobs completed
-        run: echo "Jobs complet with kubectl version ${{ matrix.kubectl-version }}..."            
+        run: echo "Jobs complete with kubectl version ${{ matrix.kubectl-version }}..."            

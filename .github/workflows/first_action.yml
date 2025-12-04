@@ -15,7 +15,7 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: node_modules    # only now takes local installed dependencues and softwares etc doesnt bother even if npm ci run is needed or not.
           key: dependency-${{ hashFiles('**/package-lock.json')}}        
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
@@ -70,4 +70,11 @@ jobs:
       - name: Output filename
         run: echo "${{needs.building_code.outputs.script-file}}"          
       - name: Deploy
-        run: echo "Deploying..."            
+        run: echo "Deploying..."       
+
+  final:
+    needs: [testing_code, building_code, deploying_code]
+    runs-on: ubuntu-latest
+    steps:      
+      - name: All Jobs completed
+        run: echo "All Jobs completed..."            

@@ -73,7 +73,7 @@ jobs:
         run: echo "Deploying..."       
 
   final:
-    needs: [testing_code, building_code, deploying_code]
+    needs: [testing_code]
     runs-on: ubuntu-latest
     steps:      
       - name: All Jobs completed

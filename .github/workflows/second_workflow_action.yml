@@ -1,9 +1,0 @@
-# Commenting to test
-name: Second_Workflow
-on: workflow_call
-jobs:
-  job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Adding the env values
-        run: echo "I am getting called" 

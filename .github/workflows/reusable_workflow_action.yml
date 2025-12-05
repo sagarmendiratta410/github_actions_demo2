@@ -1,0 +1,16 @@
+# Commenting to test
+name: Reusable_Workflow
+on: 
+  workflow_call:
+    inputs:
+      artifact-name:  
+        description: The name of the deployable artifact files
+        required: false
+        default: dist
+        type: string
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Adding the env values
+        run: echo "I am getting called" 

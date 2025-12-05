@@ -90,3 +90,5 @@ jobs:
   calling_workflow: 
      needs: [testing_code]
      uses: ./.github/workflows/second_workflow_action.yml
+     with: 
+       artifact-name: dist-files
